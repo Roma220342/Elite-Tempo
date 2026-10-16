@@ -27,3 +27,10 @@ svg { display: block; }
   .device__bezel { display: block; position: absolute; inset: 0; width: 450px; height: 920px; pointer-events: none; z-index: 100; }
 }
 [data-theme="light"] .stage { background: #d9d7d2; }
+
+/* QA capture mode */
+html[data-bare] .stage { background: #ff00ff !important; }
+html[data-bare] .device { transform: translate(-50%, -50%) !important; }
+html[data-bare] .device__bezel, html[data-bare] .proto-controls { display: none !important; }
+html[data-bare] .device__screen { border-radius: 0 !important; }
+html[data-bare] *, html[data-bare] *::before, html[data-bare] *::after { transition: none !important; animation: none !important; }

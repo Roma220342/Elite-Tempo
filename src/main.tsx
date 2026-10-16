@@ -14,6 +14,9 @@ const fit = () => document.documentElement.style.setProperty('--fit', String(Mat
 fit()
 addEventListener('resize', fit)
 
+// QA: ?bare draws the screen unframed on magenta, no motion, for pixel comparison with Figma
+if (new URLSearchParams(location.search).has('bare')) document.documentElement.dataset.bare = '1'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

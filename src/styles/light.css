@@ -49,7 +49,7 @@
   --tag-bg: var(--neutral-800);
   --pager-off: var(--neutral-700);
   --media: var(--neutral-900);
-  --swing-card: var(--neutral-850);
+  --swing-card: var(--neutral-900);
   --glass-rim: rgba(255, 255, 255, .22);
 }
 
@@ -124,3 +124,5 @@
 .hero__box img { z-index: 1; }
 :root { --backlight: var(--neutral-300); --backlight-a: .08; --backlight-hit-a: .2; }
 :root[data-theme="light"] { --backlight: var(--neutral-400); --backlight-a: .45; --backlight-hit-a: .6; }
+/* Notifications bell: Success/50 in dark, Neutral/950 in light (Figma 16 – Light) */
+[data-theme="light"] .notif__bell { color: var(--text); }
