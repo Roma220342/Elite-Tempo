@@ -44,3 +44,21 @@
 .step--current { color: var(--text); }
 .step__chev { color: var(--text-2-card); display: flex; transform: scaleX(-1); }
 .step__chev svg { height: 15px; width: auto; }
+
+/* Chips wrap instead of scrolling sideways */
+.chips { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; row-gap: 12px; }
+
+/* iOS scroll edge effect: content slides under the status bar with a progressive blur and fade */
+.shell--scroll .scroll { margin-top: 0; padding-top: 62px; }
+.scroll-edge { position: absolute; top: 0; left: 0; right: 0; z-index: 5; height: 62px; pointer-events: none; }
+.scroll-edge::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 96px; z-index: -1;
+  background: linear-gradient(to bottom, var(--bg) 0%, color-mix(in srgb, var(--bg) 70%, transparent) 55%, transparent 100%);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%); mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+}
+@media (max-width: 519.98px) {
+  .shell--scroll .scroll { padding-top: calc(env(safe-area-inset-top) + 8px); }
+  .scroll-edge { height: env(safe-area-inset-top); }
+  .scroll-edge::before { height: calc(env(safe-area-inset-top) + 32px); }
+}

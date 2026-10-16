@@ -128,8 +128,8 @@ export function MySwings({ state = 22, onLimit }: { state?: SwingsState; onLimit
   const week = full || state === 19
 
   return (
-    <div className="shell">
-      <StatusBar />
+    <div className="shell shell--scroll">
+      <div className="scroll-edge"><StatusBar /></div>
       <div className="scroll">
         <TopBar trailing="title" title="My Swings" onSettings={() => { const h = document.documentElement; h.dataset.theme = h.dataset.theme === 'light' ? 'dark' : 'light' }} />
         <div className="swings-content">
