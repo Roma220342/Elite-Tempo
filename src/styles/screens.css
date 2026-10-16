@@ -52,7 +52,7 @@
 .tempo__labels span.is-on { color: var(--text); }
 .tempo__bar { position: relative; height: 48px; }
 .tempo__track, .tempo__played { position: absolute; top: 13px; left: 4px; height: 2px; border-radius: 1px; }
-.tempo__track { width: 362px; background: var(--track); }
+.tempo__track { right: 4px; background: var(--track); }
 .tempo__played { background: var(--text); }
 .tempo__dot { position: absolute; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--card); box-shadow: inset 0 0 0 1.5px var(--neutral-500); transition: background-color .2s, box-shadow .2s; }
 .tempo__dot.is-on { background: var(--text); box-shadow: none; }
@@ -97,3 +97,13 @@
 .notif__content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: 64px; text-align: center; gap: 4px; }
 .notif__bell { color: var(--success-50); margin-bottom: 20px; }
 .notif__bell svg { width: 52px; height: 58px; }
+
+/* Mobile fixes: top bar flush to gutters, content never overlaps the buttons */
+.body .topbar { padding-left: 0; padding-right: 0; }
+.body__main { overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
+.body__main::-webkit-scrollbar { display: none; }
+@media (max-height: 760px) {
+  .hero { padding: 0; }
+  .hero__box { transform: scale(.78); margin: -26px 0; }
+  .slot { height: 76px; }
+}

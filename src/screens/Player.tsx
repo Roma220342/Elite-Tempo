@@ -35,6 +35,7 @@ export function Player({ onBack, onSkip, onNext }: { onBack: () => void; onSkip:
   const showMarker = phase === 'start' || phase === 'top' || phase === 'hit'
   const playedTo = result ? 366 : marker.x
   const tr = `${marker.ms}ms linear`
+  const pc = (v: number) => `${(v / 370) * 100}%`
 
   return (
     <Shell>
@@ -73,14 +74,14 @@ export function Player({ onBack, onSkip, onNext }: { onBack: () => void; onSkip:
               </div>
               <div className="tempo__bar">
                 <i className="tempo__track" />
-                <i className="tempo__played" style={{ width: playedTo - 4, transition: `width ${tr}` }} />
+                <i className="tempo__played" style={{ width: pc(playedTo - 4), transition: `width ${tr}` }} />
                 {(['start', 'top', 'hit'] as const).map(k => (
-                  <i key={k} className={`tempo__dot${reached(k) ? ' is-on' : ''}`} style={{ left: X[k] - 4 }} />
+                  <i key={k} className={`tempo__dot${reached(k) ? ' is-on' : ''}`} style={{ left: `calc(${pc(X[k])} - 4px)` }} />
                 ))}
                 <i className={`tempo__now${phase === 'hit' ? ' is-hit' : ''}`}
-                  style={{ left: marker.x - 6, opacity: showMarker ? 1 : 0, transition: `left ${tr}, opacity .2s, background-color .2s, box-shadow .2s` }} />
-                <span className={`t-number-s tempo__time${reached('top') ? ' is-on' : ''}`} style={{ left: 124 }}>0.82 s</span>
-                <span className={`t-number-s tempo__time${reached('hit') ? ' is-on' : ''}`} style={{ left: 306 }}>0.22 s</span>
+                  style={{ left: `calc(${pc(marker.x)} - 6px)`, opacity: showMarker ? 1 : 0, transition: `left ${tr}, opacity .2s, background-color .2s, box-shadow .2s` }} />
+                <span className={`t-number-s tempo__time${reached('top') ? ' is-on' : ''}`} style={{ left: pc(124) }}>0.82 s</span>
+                <span className={`t-number-s tempo__time${reached('hit') ? ' is-on' : ''}`} style={{ left: pc(306) }}>0.22 s</span>
               </div>
             </div>
           </div>

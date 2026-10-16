@@ -62,13 +62,14 @@ export function MarkIntro({ onBack, onSkip, onNext }: Nav) {
 
 /* 13 Compare */
 function Bar({ back, down, dim, labels }: { back: number; down: number; dim?: boolean; labels: [string, number][] }) {
+  const pc = (v: number) => `${(v / 370) * 100}%`
   const c = dim ? 'var(--neutral-500)' : 'var(--text)'
   return (
     <div className="cbar">
-      <i className="cbar__seg" style={{ left: 4, width: back, background: c }} />
-      <i className="cbar__seg" style={{ left: 4 + back, width: down, background: c }} />
-      {[0, back, back + down].map((x, i) => <i key={i} className="cbar__dot" style={{ left: x, background: c }} />)}
-      {labels.map(([t, x]) => <span key={t} className="t-number-s cbar__time" style={{ left: x, color: dim ? 'var(--text-2-card)' : 'var(--text)' }}>{t}</span>)}
+      <i className="cbar__seg" style={{ left: pc(4), width: pc(back), background: c }} />
+      <i className="cbar__seg" style={{ left: pc(4 + back), width: pc(down), background: c }} />
+      {[0, back, back + down].map((x, i) => <i key={i} className="cbar__dot" style={{ left: pc(x), background: c }} />)}
+      {labels.map(([t, x]) => <span key={t} className="t-number-s cbar__time" style={{ left: pc(x), color: dim ? 'var(--text-2-card)' : 'var(--text)' }}>{t}</span>)}
     </div>
   )
 }
