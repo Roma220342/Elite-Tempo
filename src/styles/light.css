@@ -118,3 +118,5 @@
   .proto-controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 .point.is-marked { background: var(--point-marked); }
+/* Light: on the Hit tone tint the backlight yellow (color blend keeps the silhouette black) */
+[data-theme="light"] .hero__glow--hit { z-index: 1; mix-blend-mode: color; background: radial-gradient(closest-side, rgba(245, 198, 61, 1), rgba(245, 198, 61, 0)); }
