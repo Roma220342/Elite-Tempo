@@ -15,4 +15,3 @@ body { font-family: var(--font); font-feature-settings: "ss15" 1; -webkit-font-s
 /* Non-Apple platforms render Inter, which runs ~3% wider than SF Pro: tighten so lines break as in Figma */
 [data-font="inter"] .t-large-title { letter-spacing: -0.4px; }
 [data-font="inter"] .t-title-2, [data-font="inter"] .t-number-xl { letter-spacing: -0.6px; }
-[data-font="inter"] .t-body, [data-font="inter"] .t-headline { letter-spacing: -0.6px; }

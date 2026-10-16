@@ -130,7 +130,7 @@ export function MySwings({ state = 22, onLimit }: { state?: SwingsState; onLimit
   return (
     <div className="shell shell--scroll">
       <div className="scroll-edge"><StatusBar /></div>
-      <div className="scroll">
+      <div className="scroll" onScroll={e => e.currentTarget.parentElement!.toggleAttribute('data-scrolled', e.currentTarget.scrollTop > 2)}>
         <TopBar trailing="title" title="My Swings" onSettings={() => { const h = document.documentElement; h.dataset.theme = h.dataset.theme === 'light' ? 'dark' : 'light' }} />
         <div className="swings-content">
           <section className="stack12">

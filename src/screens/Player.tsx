@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Button, TopBar } from '../components'
 import { tone } from '../audio'
 import golfer from '../assets/golfer.svg'
+import golferLight from '../assets/golfer-light.svg'
 import { Shell } from './Shell'
 
 type Phase = 'ready' | 'start' | 'top' | 'hit' | 'result'
@@ -51,7 +52,8 @@ export function Player({ onBack, onSkip, onNext }: { onBack: () => void; onSkip:
               <div className="hero__box">
                 <i className="hero__glow" />
                 <i className="hero__glow hero__glow--hit" style={{ opacity: phase === 'hit' ? 1 : 0 }} />
-                <img src={golfer} alt="" width={337.667} height={395.8} draggable={false} />
+                <img className="hero__dark" src={golfer} alt="" width={337.667} height={395.8} draggable={false} />
+                <img className="hero__light" src={golferLight} alt="" width={337.667} height={395.8} draggable={false} />
               </div>
             </div>
           </div>

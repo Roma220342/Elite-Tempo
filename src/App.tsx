@@ -6,6 +6,7 @@ import { Player } from './screens/Player'
 import { MySwings } from './screens/MySwings'
 import type { SwingsState } from './screens/MySwings'
 import { Gallery } from './Gallery'
+import { ProtoControls } from './ProtoControls'
 import bezel from './assets/reference/bezel.png'
 
 type Screen = 'splash' | 'limit' | 'hear' | 'player' | 'markIntro' | 'mark' | 'compare' | 'paywall' | 'notifications' | 'swings'
@@ -44,6 +45,7 @@ export default function App() {
         <div className="device__screen"><div className="screen">{view}</div></div>
         <img className="device__bezel" src={bezel} alt="" draggable={false} />
       </div>
+      <ProtoControls onRestart={() => setScreen('splash')} />
     </div>
   )
 }

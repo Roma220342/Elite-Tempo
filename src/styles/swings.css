@@ -62,3 +62,5 @@
   .scroll-edge { height: env(safe-area-inset-top); }
   .scroll-edge::before { height: calc(env(safe-area-inset-top) + 32px); }
 }
+.scroll-edge::before { opacity: 0; transition: opacity .2s; }
+[data-scrolled] > .scroll-edge::before { opacity: 1; }

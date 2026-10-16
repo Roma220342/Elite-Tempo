@@ -19,7 +19,7 @@ import skip from '../assets/glass/skip.png'
 const GLASS: Record<string, { src: string; w: number }> = {
   'chevron.left': { src: back, w: 74 }, xmark: { src: close, w: 74 }, gearshape: { src: settings, w: 74 }, skip: { src: skip, w: 94 },
 }
-export function GlassButton({ icon, label, onClick, ...p }:
+export function GlassButton({ icon, label, onClick, wide: _wide, ...p }:
   { icon?: string; label: string; wide?: boolean } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const g = GLASS[icon ?? 'skip']
   return (
