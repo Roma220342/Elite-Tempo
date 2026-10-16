@@ -43,7 +43,7 @@
   --glow-rgb: 209, 206, 199;
   --menu-bg: rgba(38, 36, 31, .78);
   --tab-on: rgba(255, 255, 255, .09);
-  --point-active: var(--neutral-850);
+  --point-active: var(--neutral-900);
   --point-marked: var(--neutral-900);
   --point-border: var(--accent-500);
   --tag-bg: var(--neutral-800);
