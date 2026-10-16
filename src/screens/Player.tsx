@@ -16,18 +16,26 @@ const X = { start: 4, top: 289, hit: 366 } // dot centers on the 370px track
 export function Player({ onBack, onSkip, onNext }: { onBack: () => void; onSkip: () => void; onNext: () => void }) {
   const [phase, setPhase] = useState<Phase>('ready')
   const [marker, setMarker] = useState({ x: X.start, ms: 0 })
+  const [moving, setMoving] = useState(false)
   const [run, setRun] = useState(0)
 
   useEffect(() => {
     setPhase('ready')
     setMarker({ x: X.start, ms: 0 })
+    setMoving(false)
     const t: number[] = []
     const at = (ms: number, fn: () => void) => t.push(window.setTimeout(fn, ms))
-    at(700, () => { setPhase('start'); tone(0) })
-    at(760, () => setMarker({ x: X.top, ms: BACK_MS }))
-    at(700 + BACK_MS + 60, () => { setPhase('top'); tone(1); setMarker({ x: X.hit, ms: DOWN_MS }) })
-    at(700 + BACK_MS + 60 + DOWN_MS, () => { setPhase('hit'); tone(2) })
-    at(700 + BACK_MS + 60 + DOWN_MS + 900, () => setPhase('result'))
+    // Start tone, rest, travel the backswing, Top tone, rest, travel the downswing, Hit
+    const REST = 90
+    const START = 700
+    const TOP = START + BACK_MS
+    const HIT = TOP + DOWN_MS
+    at(START, () => { setPhase('start'); tone(0) })
+    at(START + REST, () => { setMoving(true); setMarker({ x: X.top, ms: BACK_MS - REST }) })
+    at(TOP, () => { setPhase('top'); tone(1); setMoving(false) })
+    at(TOP + REST, () => { setMoving(true); setMarker({ x: X.hit, ms: DOWN_MS - REST }) })
+    at(HIT, () => { setPhase('hit'); tone(2); setMoving(false) })
+    at(HIT + 900, () => setPhase('result'))
     return () => t.forEach(window.clearTimeout)
   }, [run])
 
@@ -51,7 +59,7 @@ export function Player({ onBack, onSkip, onNext }: { onBack: () => void; onSkip:
             <div className="hero">
               <div className="hero__box">
                 <i className="hero__glow" />
-                <i className="hero__glow hero__glow--hit" style={{ opacity: phase === 'hit' ? 1 : 0 }} />
+                <i className="hero__glow hero__glow--hit" style={{ opacity: phase === 'hit' ? 'var(--backlight-hit-a)' : 0 }} />
                 <img className="hero__dark" src={golfer} alt="" width={337.667} height={395.8} draggable={false} />
                 <img className="hero__light" src={golferLight} alt="" width={337.667} height={395.8} draggable={false} />
               </div>
@@ -80,8 +88,8 @@ export function Player({ onBack, onSkip, onNext }: { onBack: () => void; onSkip:
                 {(['start', 'top', 'hit'] as const).map(k => (
                   <i key={k} className={`tempo__dot${reached(k) ? ' is-on' : ''}`} style={{ left: `calc(${pc(X[k])} - 4px)` }} />
                 ))}
-                <i className={`tempo__now${phase === 'hit' ? ' is-hit' : ''}`}
-                  style={{ left: `calc(${pc(marker.x)} - 6px)`, opacity: showMarker ? 1 : 0, transition: `left ${tr}, opacity .2s, background-color .2s, box-shadow .2s` }} />
+                <i className={`tempo__now${phase === 'hit' ? ' is-hit' : ''}${moving ? ' is-moving' : ''}`}
+                  style={{ left: pc(marker.x), opacity: showMarker ? 1 : 0, transition: `left ${tr}, opacity .2s, width .12s, height .12s, background-color .2s, box-shadow .2s` }} />
                 <span className={`t-number-s tempo__time${reached('top') ? ' is-on' : ''}`} style={{ left: pc(124) }}>0.82 s</span>
                 <span className={`t-number-s tempo__time${reached('hit') ? ' is-on' : ''}`} style={{ left: pc(306) }}>0.22 s</span>
               </div>

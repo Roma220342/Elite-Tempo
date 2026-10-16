@@ -1,8 +1,6 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="337.667" height="395.8" viewBox="0 0 337.667 395.8" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Container">
-<g id="Backlight" opacity="0.45" filter="url(#filter0_f_0_88)">
-<ellipse cx="168.833" cy="197.9" rx="90.8333" ry="119.9" fill="#A39E8F"/>
-</g>
+
 <g id="Vector">
 <mask id="path-2-outside-1_0_88" maskUnits="userSpaceOnUse" x="112.469" y="85" width="114" height="226" fill="black">
 <rect fill="white" x="112.469" y="85" width="114" height="226"/>

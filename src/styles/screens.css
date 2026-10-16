@@ -56,8 +56,10 @@
 .tempo__played { background: var(--text); }
 .tempo__dot { position: absolute; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--card); box-shadow: inset 0 0 0 1.5px var(--neutral-500); transition: background-color .2s, box-shadow .2s; }
 .tempo__dot.is-on { background: var(--text); box-shadow: none; }
-.tempo__now { position: absolute; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--text); box-shadow: 0 0 14px 4px rgba(250, 250, 249, .45); }
+.tempo__now { position: absolute; top: 14px; width: 12px; height: 12px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--text); box-shadow: 0 0 14px 4px rgba(var(--glow-rgb), .45); }
+.tempo__now.is-moving { width: 8px; height: 8px; box-shadow: none; }
 .tempo__now.is-hit { background: var(--accent); box-shadow: 0 0 14px 4px rgba(245, 198, 61, .55); }
+.tempo__now.is-hit.is-moving { box-shadow: none; }
 .tempo__time { position: absolute; top: 28px; color: var(--text); white-space: nowrap; opacity: 0; transition: opacity .25s; }
 .tempo__time.is-on { opacity: 1; }
 

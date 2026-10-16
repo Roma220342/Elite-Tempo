@@ -57,13 +57,11 @@
 .photo__fade { background: linear-gradient(to bottom, rgba(var(--fade-rgb), 0), rgba(var(--fade-rgb), .98)); }
 .swing-card { background-color: var(--swing-card); }
 .swing-card__shade { background: linear-gradient(to bottom, rgba(var(--fade-rgb), 0), rgba(var(--fade-rgb), .95)); }
-.hero__glow { background: radial-gradient(closest-side, rgba(var(--glow-rgb), .14), rgba(var(--glow-rgb), 0)); }
 .glass-menu { background: var(--menu-bg); }
 .tabbar { background: linear-gradient(to bottom, transparent, var(--bg) 45%); }
 .tabbar__tab.is-on { background: var(--tab-on); color: var(--accent-ink); }
 .seg__item.is-on span { color: var(--text); }
 .point.is-active { background: var(--point-active); border-color: var(--point-border); }
-.tempo__now:not(.is-hit) { box-shadow: 0 0 14px 4px rgba(var(--glow-rgb), .45); }
 .tag { background: var(--tag-bg); }
 .scale__zone { background: var(--tag-bg); }
 .pager i { background: var(--pager-off); }
@@ -77,7 +75,7 @@
 
 /* Golfer: outline art in dark, solid silhouette with its own backlight in light */
 .hero__light { display: none; }
-[data-theme="light"] .hero__dark, [data-theme="light"] .hero__glow:not(.hero__glow--hit) { display: none; }
+[data-theme="light"] .hero__dark { display: none; }
 [data-theme="light"] .hero__light { display: block; }
 
 /* Glass buttons: PNG in dark, CSS glass with the SF glyph in light */
@@ -118,5 +116,11 @@
   .proto-controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 .point.is-marked { background: var(--point-marked); }
-/* Light: on the Hit tone tint the backlight yellow (color blend keeps the silhouette black) */
-[data-theme="light"] .hero__glow--hit { z-index: 1; mix-blend-mode: color; background: radial-gradient(closest-side, rgba(245, 198, 61, .6), rgba(245, 198, 61, 0) 80%); }
+
+/* Backlight behind the golfer (Figma: 182x240 ellipse, blur 39).
+   Dark: Neutral/300 at 8%, Light: Neutral/400 at 45%; on the Hit tone it crossfades to Accent/300 */
+.hero__glow { position: absolute; inset: 0; width: auto; height: auto; transform: none; border-radius: 50%; filter: blur(39px); background: var(--backlight); opacity: var(--backlight-a); transition: opacity .3s; pointer-events: none; }
+.hero__glow--hit { background: var(--accent-300); opacity: 0; }
+.hero__box img { z-index: 1; }
+:root { --backlight: var(--neutral-300); --backlight-a: .08; --backlight-hit-a: .2; }
+:root[data-theme="light"] { --backlight: var(--neutral-400); --backlight-a: .45; --backlight-hit-a: .6; }
