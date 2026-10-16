@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Icon, Link, Segmented, TopBar } from '../components'
 import { Moment, Segment, Shell } from './Shell'
 
@@ -33,7 +33,7 @@ function Header({ title, text }: { title: string; text: string }) {
   return (
     <div className="header">
       <h1 className="t-large-title">{title}</h1>
-      <p className="t-body" style={{ color: 'var(--text-2-card)' }}>{text}</p>
+      <p className="t-body" style={{ color: 'var(--text-2-card)', whiteSpace: 'pre-line' }}>{text}</p>
     </div>
   )
 }
@@ -110,21 +110,24 @@ const PLAN = {
   yearly: { sub: '14 days free, then $59.99 a year', day14: 'Your yearly plan starts, unless you cancel before' },
   monthly: { sub: '14 days free, then $6.99 a month', day14: 'Your monthly plan starts, unless you cancel before' },
 }
-export function Paywall({ onClose, onNext }: { onClose: () => void; onNext: () => void }) {
+export function Paywall({ onClose, onNext, limit }: { onClose: () => void; onNext: () => void; limit?: boolean }) {
   const [plan, setPlan] = useState<Plan>('yearly')
   return (
     <Shell>
       <div className="body__main" style={{ gap: 24 }}>
         <div className="stack16">
           <TopBar trailing="close" onTrailing={onClose} />
-          <Header title="How your trial works" text={PLAN[plan].sub} />
+          {limit
+            ? <Header title="Unlimited swings" text={`You’ve used your 3 free swings
+${PLAN[plan].sub}`} />
+            : <Header title="How your trial works" text={PLAN[plan].sub} />}
         </div>
         <Segmented value={plan} onChange={setPlan} options={[
           { value: 'yearly', label: 'Yearly', detail: 'save 28%' },
           { value: 'monthly', label: 'Monthly', detail: '$6.99' },
         ]} />
         <div className="timeline">
-          <Moment title="Today" text="Full access to all 16 tour tempos, swing timing and pro comparison" first />
+          <Moment title="Today" text={limit ? 'Unlimited swings, all 16 tour tempos and routine timing' : 'Full access to all 16 tour tempos, swing timing and pro comparison'} first />
           <Segment />
           <Moment title="Day 12" text="We remind you that the trial ends in 2 days" />
           <Segment height={24} />
@@ -158,6 +161,20 @@ export function Notifications({ onNext }: { onNext: () => void }) {
         <Button variant="secondary" onClick={onNext}>Not now</Button>
         <Button onClick={onNext}>Turn on notifications</Button>
       </div>
+    </Shell>
+  )
+}
+
+/* 01 Splash */
+import logo from '../assets/logo.svg'
+export function Splash({ onNext }: { onNext: () => void }) {
+  useEffect(() => { const t = window.setTimeout(onNext, 1600); return () => window.clearTimeout(t) }, [onNext])
+  return (
+    <Shell bottom={62}>
+      <button className="splash" onClick={onNext} aria-label="Continue">
+        <img src={logo} alt="" width={41} height={28.6} />
+        <span className="t-title-2">ELITE TEMPO</span>
+      </button>
     </Shell>
   )
 }

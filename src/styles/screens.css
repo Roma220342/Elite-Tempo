@@ -110,3 +110,4 @@
 
 /* Let glass buttons (74px PNG around a 44px control) overflow freely */
 .body__main { margin: -8px -16px 0; padding: 8px 16px 0; }
+.splash { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text); }

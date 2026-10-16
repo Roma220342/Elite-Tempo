@@ -31,3 +31,16 @@
 .tip__n { width: 16px; flex: none; color: var(--text-2); }
 .tip__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; color: var(--text); }
 .tip__sub { color: var(--text-2-card); }
+
+/* Get started checklist (17, 20, 21) */
+.started { display: flex; flex-direction: column; padding: 8px 20px; border-radius: var(--radius-card); background: var(--card); }
+.started__head { padding: 12px 0 4px; }
+.step { display: flex; align-items: center; gap: 12px; padding: 12px 0; text-align: left; color: var(--text-2-card); }
+.step:disabled { cursor: default; }
+.step__dot { width: 12px; height: 12px; flex: none; border-radius: 50%; }
+.step--done .step__dot { background: radial-gradient(circle, var(--text) 5px, transparent 5.5px); }
+.step--current .step__dot, .step--pending .step__dot { background: radial-gradient(circle, var(--card) 2.75px, var(--neutral-500) 3.25px, var(--neutral-500) 4.5px, transparent 5px); }
+.step__label { flex: 1; min-width: 0; }
+.step--current { color: var(--text); }
+.step__chev { color: var(--text-2-card); display: flex; transform: scaleX(-1); }
+.step__chev svg { height: 15px; width: auto; }
