@@ -1,0 +1,35 @@
+/* ---------- My Swings (22) ---------- */
+.scroll { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 0 var(--gutter) 111px; scrollbar-width: none; }
+.scroll::-webkit-scrollbar { display: none; }
+.scroll .topbar { padding: 0 0 10px; margin-bottom: 16px; }
+.swings-content { display: flex; flex-direction: column; gap: 24px; }
+.row-between { display: flex; align-items: center; justify-content: space-between; }
+.row-gap8 { display: flex; align-items: center; gap: 8px; }
+.stack8 { display: flex; flex-direction: column; gap: 8px; }
+
+.tempo-card { display: flex; flex-direction: column; gap: 16px; padding: 20px; border-radius: var(--radius-card); background: var(--card); }
+.scale { position: relative; height: 40px; }
+.scale__zone { position: absolute; top: 0; height: 20px; border-radius: 10px; background: var(--neutral-800); opacity: .7; }
+.scale__track { position: absolute; top: 9px; left: 4px; width: 322px; height: 2px; border-radius: 1px; background: var(--track); }
+.scale__dot { position: absolute; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--card); box-shadow: inset 0 0 0 1.5px var(--neutral-500); }
+.scale__dot.is-good { background: var(--text); box-shadow: none; }
+.scale__min, .scale__max { position: absolute; top: 22px; color: var(--text-2-card); }
+.scale__min { left: 0; }
+.scale__max { left: 310px; }
+
+.chips { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chips .chip { flex: none; }
+.chips svg { width: auto; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.grid .swing-card { width: 100%; }
+
+/* Sheets: tips and add */
+.sheet__actions { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
+.tips { display: flex; flex-direction: column; gap: 20px; }
+.tip { display: flex; gap: 12px; align-items: flex-start; }
+.tip__n { width: 16px; flex: none; color: var(--text-2); }
+.tip__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; color: var(--text); }
+.tip__sub { color: var(--text-2-card); }
+.tabbar::before { content: ""; position: absolute; inset: 0; background: var(--bg); }
+.tabbar img { position: relative; }

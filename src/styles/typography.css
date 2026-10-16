@@ -1,0 +1,13 @@
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Variable", "Inter", system-ui, sans-serif;
+}
+body { font-family: var(--font); font-feature-settings: "ss15" 1; -webkit-font-smoothing: antialiased; }
+
+.t-large-title { font: 700 34px/41px var(--font); letter-spacing: 0.4px; }
+.t-title-2 { font: 700 22px/28px var(--font); letter-spacing: -0.26px; }
+.t-headline { font: 590 17px/22px var(--font); letter-spacing: -0.43px; }
+.t-body { font: 400 17px/22px var(--font); letter-spacing: -0.43px; }
+.t-footnote { font: 400 13px/18px var(--font); letter-spacing: -0.08px; }
+.t-footnote-em { font: 590 13px/18px var(--font); letter-spacing: -0.08px; }
+.t-number-xl { font: 700 72px/72px var(--font); letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+.t-number-s { font: 590 15px/20px var(--font); letter-spacing: -0.23px; font-variant-numeric: tabular-nums; }
