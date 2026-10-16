@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Button, Chip, Icon, Link, PullDown, Segmented, Sheet, SwingCard, TabBar, Tag, TopBar, WeekTrack } from '../components'
-import type { DayState } from '../components'
+import type { DayState, Tab } from '../components'
 import { tone, unlockAudio } from '../audio'
 import statusBar from '../assets/reference/status-bar.svg'
 
@@ -59,6 +59,7 @@ export function MySwings() {
   const [sort, setSort] = useState<'Newest' | 'Oldest'>('Newest')
   const [sheet, setSheet] = useState<SheetId>(null)
   const [tipsSeen, setTipsSeen] = useState(false)
+  const [tab, setTab] = useState<Tab>('swings')
   const [mode, setMode] = useState<'swing' | 'routine'>('swing')
 
   const t = TEMPO[tempoClub]
@@ -123,7 +124,7 @@ export function MySwings() {
         </div>
       </div>
 
-      <TabBar onChange={() => {}} onAdd={openAdd} />
+      <TabBar active={tab} onChange={setTab} onAdd={openAdd} />
 
       <Sheet open={sheet === 'tips'} onClose={() => setSheet(null)}>
         <h2 className="t-headline">How to film your swing</h2>

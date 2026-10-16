@@ -176,24 +176,27 @@ export function Sheet({ open, onClose, children }: { open: boolean; onClose: () 
   )
 }
 
-import tabbar from '../assets/glass/tabbar.png'
 export type Tab = 'swings' | 'tempos' | 'routines' | 'me'
-const ZONES: { id: Tab; label: string; x: number; w: number }[] = [
-  { id: 'swings', label: 'My Swings', x: 20, w: 78 },
-  { id: 'tempos', label: 'Pro tempos', x: 98, w: 67 },
-  { id: 'routines', label: 'Routines', x: 165, w: 67 },
-  { id: 'me', label: 'Me', x: 232, w: 73 },
+const TABS: { id: Tab; label: string; icon: string }[] = [
+  { id: 'swings', label: 'My Swings', icon: 'video.fill' },
+  { id: 'tempos', label: 'Pro tempos', icon: 'music.note' },
+  { id: 'routines', label: 'Routines', icon: 'list.bullet' },
+  { id: 'me', label: 'Me', icon: 'person.crop.circle' },
 ]
-/* Figma tab bar is a 402x95 PNG at the bottom of the screen; transparent buttons give the hit areas */
-export function TabBar({ onChange, onAdd }: { active?: Tab; onChange: (t: Tab) => void; onAdd: () => void }) {
+/* iOS 26 tab bar: glass capsule with 4 tabs + separate prominent "+" */
+export function TabBar({ active = 'swings', onChange, onAdd }: { active?: Tab; onChange: (t: Tab) => void; onAdd: () => void }) {
   return (
-    <nav className="tabbar" aria-label="Tabs">
-      <img src={tabbar} alt="" width={402} height={95} draggable={false} />
-      {ZONES.map(z => (
-        <button key={z.id} className="tabbar__zone" aria-label={z.label} style={{ left: z.x, width: z.w }} onClick={() => onChange(z.id)} />
-      ))}
-      <button className="tabbar__zone" aria-label="Add" style={{ left: 318, width: 64 }} onClick={onAdd} />
-    </nav>
+    <div className="tabbar">
+      <nav className="glass tabbar__bar" aria-label="Tabs">
+        {TABS.map(t => (
+          <button key={t.id} className={`tabbar__tab${t.id === active ? ' is-on' : ''}`} aria-current={t.id === active} onClick={() => onChange(t.id)}>
+            <span className="tabbar__icon"><Icon name={t.icon} /></span>
+            <span className="tabbar__label">{t.label}</span>
+          </button>
+        ))}
+      </nav>
+      <button className="tabbar__add" aria-label="Add" onClick={onAdd}><Icon name="plus" /></button>
+    </div>
   )
 }
 
