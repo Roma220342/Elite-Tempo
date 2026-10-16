@@ -25,6 +25,7 @@ export function GlassButton({ icon, label, onClick, ...p }:
   return (
     <button className={`glass-btn${g.w > 74 ? ' glass-btn--wide' : ''}`} aria-label={label} onClick={onClick} {...p}>
       <img src={g.src} alt="" width={g.w} height={74} draggable={false} />
+      <span className="glass-btn__css">{icon ? <Icon name={icon} /> : <span className="t-headline">{label}</span>}</span>
     </button>
   )
 }

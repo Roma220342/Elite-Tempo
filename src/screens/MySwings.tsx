@@ -131,7 +131,7 @@ export function MySwings({ state = 22, onLimit }: { state?: SwingsState; onLimit
     <div className="shell">
       <img className="statusbar" src={statusBar} alt="" width={402} height={62} draggable={false} />
       <div className="scroll">
-        <TopBar trailing="title" title="My Swings" />
+        <TopBar trailing="title" title="My Swings" onSettings={() => { const h = document.documentElement; h.dataset.theme = h.dataset.theme === 'light' ? 'dark' : 'light' }} />
         <div className="swings-content">
           <section className="stack12">
             <div className="row-between">

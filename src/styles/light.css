@@ -1,0 +1,67 @@
+/* ---------- Light theme (Figma: sections "– Light") ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--neutral-100);
+  --card-low: var(--neutral-50);
+  --card: var(--neutral-0);
+  --control-bg: var(--neutral-200);
+  --selected: var(--neutral-0);
+  --fill: var(--neutral-200);
+  --track: var(--neutral-300);
+  --text: var(--neutral-950);
+  --text-2: var(--neutral-800);
+  --text-2-card: var(--neutral-800);
+  --placeholder: var(--neutral-200);
+  --btn-disabled-bg: var(--neutral-75);
+  --btn-disabled-text: var(--neutral-500);
+  --accent-ink: var(--accent-800);
+  --accent: var(--accent-500);
+  --btn-primary-bg: var(--accent-500);
+  --btn-primary-text: var(--neutral-950);
+
+  --glass-fill: rgba(255, 255, 255, .62);
+  --glass-edge: rgba(0, 0, 0, .08);
+  --glass-ink: var(--neutral-950);
+  --sheet-fill: rgba(246, 245, 243, .92);
+  --fade-rgb: 255, 255, 255;
+  --glow-rgb: 84, 80, 69;
+  --menu-bg: rgba(250, 250, 249, .82);
+  --tab-on: rgba(0, 0, 0, .06);
+  --point-active: var(--neutral-0);
+}
+:root {
+  --fade-rgb: 38, 36, 31;
+  --glow-rgb: 209, 206, 199;
+  --menu-bg: rgba(38, 36, 31, .78);
+  --tab-on: rgba(255, 255, 255, .09);
+  --point-active: var(--neutral-850);
+}
+
+/* Theme-aware overrides of values that were fixed for dark */
+.photo__fade { background: linear-gradient(to bottom, rgba(var(--fade-rgb), 0), rgba(var(--fade-rgb), .98)); }
+.swing-card__shade { background: linear-gradient(to bottom, rgba(var(--fade-rgb), 0), rgba(var(--fade-rgb), .95)); }
+.hero__glow { background: radial-gradient(closest-side, rgba(var(--glow-rgb), .14), rgba(var(--glow-rgb), 0)); }
+.glass-menu { background: var(--menu-bg); }
+.tabbar { background: linear-gradient(to bottom, transparent, var(--bg) 45%); }
+.tabbar__tab.is-on { background: var(--tab-on); color: var(--accent-ink); }
+.seg__item.is-on span { color: var(--text); }
+.point.is-active { background: var(--point-active); }
+.tempo__now:not(.is-hit) { box-shadow: 0 0 14px 4px rgba(var(--glow-rgb), .45); }
+
+/* Light: status bar glyphs dark, golfer as a solid silhouette */
+[data-theme="light"] .statusbar { filter: brightness(0) opacity(.9); }
+[data-theme="light"] .hero__box img { filter: brightness(0) opacity(.88); }
+[data-theme="light"] body, [data-theme="light"] .stage { background: #d9d7d2; }
+
+/* Glass buttons: PNG in dark, CSS glass with the SF glyph in light */
+.glass-btn__css { display: none; }
+[data-theme="light"] .glass-btn img { display: none; }
+[data-theme="light"] .glass-btn__css {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: 100px;
+  color: var(--glass-ink); background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8);
+  box-shadow: inset 0 0 0 .5px var(--glass-edge), inset 0 1px 0 rgba(255, 255, 255, .9), 0 8px 15px rgba(0, 0, 0, .06), 0 1px 3px rgba(0, 0, 0, .08);
+}
+.glass-btn__css svg { width: auto; height: 18px; }
+.glass-btn__css .t-headline { font-weight: 510; }
+[data-theme="light"] .swing-card { background-color: var(--card); }
