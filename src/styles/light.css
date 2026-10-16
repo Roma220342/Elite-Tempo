@@ -119,4 +119,4 @@
 }
 .point.is-marked { background: var(--point-marked); }
 /* Light: on the Hit tone tint the backlight yellow (color blend keeps the silhouette black) */
-[data-theme="light"] .hero__glow--hit { z-index: 1; mix-blend-mode: color; background: radial-gradient(closest-side, rgba(245, 198, 61, 1), rgba(245, 198, 61, 0)); }
+[data-theme="light"] .hero__glow--hit { z-index: 1; mix-blend-mode: color; background: radial-gradient(closest-side, rgba(245, 198, 61, .6), rgba(245, 198, 61, 0) 80%); }
