@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react'
-import statusBar from '../assets/reference/status-bar.svg'
+import { StatusBar } from './StatusBar'
 
 /* Status bar (402x62) is only drawn inside the desktop device frame; on a phone the real one is used */
 export function Shell({ children, bottom = 36 }: { children: ReactNode; bottom?: number }) {
   return (
     <div className="shell">
-      <img className="statusbar" src={statusBar} alt="" width={402} height={62} draggable={false} />
+      <StatusBar />
       <div className="body" style={{ ['--body-bottom' as string]: `${bottom}px` }}>{children}</div>
     </div>
   )

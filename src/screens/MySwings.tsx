@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Button, Chip, Icon, Link, PullDown, Segmented, Sheet, SwingCard, TabBar, Tag, TopBar, WeekTrack } from '../components'
 import type { DayState, Tab } from '../components'
 import { tone, unlockAudio } from '../audio'
-import statusBar from '../assets/reference/status-bar.svg'
+import { StatusBar } from './StatusBar'
 
 const CLUBS = ['Driver', 'Fairway Wood', 'Iron', 'Pitch', 'Putt'] as const
 type Club = (typeof CLUBS)[number]
@@ -129,7 +129,7 @@ export function MySwings({ state = 22, onLimit }: { state?: SwingsState; onLimit
 
   return (
     <div className="shell">
-      <img className="statusbar" src={statusBar} alt="" width={402} height={62} draggable={false} />
+      <StatusBar />
       <div className="scroll">
         <TopBar trailing="title" title="My Swings" onSettings={() => { const h = document.documentElement; h.dataset.theme = h.dataset.theme === 'light' ? 'dark' : 'light' }} />
         <div className="swings-content">

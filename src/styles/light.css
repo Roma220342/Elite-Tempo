@@ -49,9 +49,10 @@
 .tempo__now:not(.is-hit) { box-shadow: 0 0 14px 4px rgba(var(--glow-rgb), .45); }
 
 /* Light: status bar glyphs dark, golfer as a solid silhouette */
-[data-theme="light"] .statusbar { filter: brightness(0) opacity(.9); }
+.statusbar--light { display: none; }
+[data-theme="light"] .statusbar--dark { display: none; }
+[data-theme="light"] .statusbar--light { display: block; }
 [data-theme="light"] .hero__box img { filter: brightness(0) opacity(.88); }
-[data-theme="light"] body, [data-theme="light"] .stage { background: #d9d7d2; }
 
 /* Glass buttons: PNG in dark, CSS glass with the SF glyph in light */
 .glass-btn__css { display: none; }

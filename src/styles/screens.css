@@ -1,7 +1,7 @@
 /* ---------- Screen layout: 16 gutters, button at y 786 (36 from the bottom) ---------- */
 .shell { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--bg); animation: screen-in .24s ease-out; }
 @keyframes screen-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.statusbar { flex: none; display: block; width: 402px; height: 62px; }
+.statusbar { flex: none; position: relative; z-index: 1; display: block; width: 402px; height: 62px; }
 .body { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 36px; padding: 0 var(--gutter) var(--body-bottom, 36px); }
 .body__main { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 16px; }
 .actions { flex: none; display: flex; flex-direction: column; gap: 8px; }
@@ -10,8 +10,8 @@
 .header { display: flex; flex-direction: column; gap: 4px; }
 .btn__row { display: inline-flex; align-items: center; gap: 8px; }
 .btn__row svg { width: auto; }
-@media not all and (min-width: 520px) and (min-height: 700px) {
-  .statusbar { display: none; }
+@media (max-width: 519.98px) {
+  .statusbar { display: none !important; }
   .body { padding-top: 8px; padding-bottom: max(16px, env(safe-area-inset-bottom)); }
 }
 
