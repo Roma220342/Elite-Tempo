@@ -34,6 +34,7 @@
   --menu-bg: rgba(250, 250, 249, .86);
   --tab-on: #ededed;
   --point-active: var(--neutral-0);
+  --point-marked: var(--neutral-0);
 }
 :root {
   --neutral-250: #dcdcd5;
@@ -43,6 +44,7 @@
   --menu-bg: rgba(38, 36, 31, .78);
   --tab-on: rgba(255, 255, 255, .09);
   --point-active: var(--neutral-850);
+  --point-marked: var(--neutral-900);
   --point-border: var(--accent-500);
   --tag-bg: var(--neutral-800);
   --pager-off: var(--neutral-700);
@@ -115,3 +117,4 @@
   .proto-controls__btn:hover { filter: brightness(1.08); }
   .proto-controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
+.point.is-marked { background: var(--point-marked); }
