@@ -104,7 +104,7 @@
 .body .topbar { padding-left: 0; padding-right: 0; }
 .body__main { overflow-y: auto; overflow-x: hidden; scrollbar-width: none; }
 .body__main::-webkit-scrollbar { display: none; }
-@media (max-height: 760px) {
+@media (max-width: 519.98px) and (max-height: 760px) {
   .hero { padding: 0; }
   .hero__box { transform: scale(.78); margin: -26px 0; }
   .slot { height: 76px; }
