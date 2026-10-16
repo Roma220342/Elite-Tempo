@@ -11,3 +11,8 @@ body { font-family: var(--font); font-feature-settings: "ss15" 1; -webkit-font-s
 .t-footnote-em { font: 590 13px/18px var(--font); letter-spacing: -0.08px; }
 .t-number-xl { font: 700 72px/72px var(--font); letter-spacing: -1px; font-variant-numeric: tabular-nums; }
 .t-number-s { font: 590 15px/20px var(--font); letter-spacing: -0.23px; font-variant-numeric: tabular-nums; }
+
+/* Non-Apple platforms render Inter, which runs ~3% wider than SF Pro: tighten so lines break as in Figma */
+[data-font="inter"] .t-large-title { letter-spacing: -0.4px; }
+[data-font="inter"] .t-title-2, [data-font="inter"] .t-number-xl { letter-spacing: -0.6px; }
+[data-font="inter"] .t-body, [data-font="inter"] .t-headline { letter-spacing: -0.6px; }
