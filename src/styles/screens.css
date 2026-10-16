@@ -107,3 +107,6 @@
   .hero__box { transform: scale(.78); margin: -26px 0; }
   .slot { height: 76px; }
 }
+
+/* Let glass buttons (74px PNG around a 44px control) overflow freely */
+.body__main { margin: -8px -16px 0; padding: 8px 16px 0; }

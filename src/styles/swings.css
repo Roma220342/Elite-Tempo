@@ -1,5 +1,5 @@
 /* ---------- My Swings (22) ---------- */
-.scroll { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 0 var(--gutter) 111px; scrollbar-width: none; }
+.scroll { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; margin-top: -8px; padding: 8px var(--gutter) 111px; scrollbar-width: none; }
 .scroll::-webkit-scrollbar { display: none; }
 .scroll .topbar { padding: 0 0 10px; margin-bottom: 16px; }
 .swings-content { display: flex; flex-direction: column; gap: 24px; }
