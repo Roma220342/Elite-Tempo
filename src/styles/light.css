@@ -78,18 +78,10 @@
 [data-theme="light"] .hero__dark { display: none; }
 [data-theme="light"] .hero__light { display: block; }
 
-/* Glass buttons: PNG in dark, CSS glass with the SF glyph in light */
-.glass-btn__css { display: none; }
-[data-theme="light"] .glass-btn img { display: none; }
-[data-theme="light"] .glass-btn__css {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: 100px;
-  color: var(--glass-ink); background: var(--glass-fill);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8);
-  box-shadow: 1.25px 0 0 -.75px var(--glass-rim), -1.25px 0 0 -.75px var(--glass-rim), 0 0 0 .5px var(--glass-edge), inset 0 1px 0 #fff, 0 8px 15px rgba(0, 0, 0, .04);
-}
-.glass-btn__css svg { width: auto; height: 19px; }
-.glass-btn[aria-label="Settings"] .glass-btn__css svg { height: 23px; }
-.glass-btn__css .t-headline { font-weight: 510; }
+/* Glass buttons: Figma PNG exports per theme */
+.glass-btn__light { display: none; }
+[data-theme="light"] .glass-btn__dark { display: none; }
+[data-theme="light"] .glass-btn__light { display: block; }
 
 /* Light glass: tab bar capsule and sheets */
 [data-theme="light"] .glass, [data-theme="light"] .glass-sheet {

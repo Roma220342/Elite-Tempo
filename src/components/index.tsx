@@ -16,16 +16,21 @@ import back from '../assets/glass/back.png'
 import close from '../assets/glass/close.png'
 import settings from '../assets/glass/settings.png'
 import skip from '../assets/glass/skip.png'
-const GLASS: Record<string, { src: string; w: number }> = {
-  'chevron.left': { src: back, w: 74 }, xmark: { src: close, w: 74 }, gearshape: { src: settings, w: 74 }, skip: { src: skip, w: 94 },
+import backL from '../assets/glass/back-light.png'
+import closeL from '../assets/glass/close-light.png'
+import settingsL from '../assets/glass/settings-light.png'
+import skipL from '../assets/glass/skip-light.png'
+const GLASS: Record<string, { src: string; light: string; w: number }> = {
+  'chevron.left': { src: back, light: backL, w: 74 }, xmark: { src: close, light: closeL, w: 74 },
+  gearshape: { src: settings, light: settingsL, w: 74 }, skip: { src: skip, light: skipL, w: 94 },
 }
 export function GlassButton({ icon, label, onClick, wide: _wide, ...p }:
   { icon?: string; label: string; wide?: boolean } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const g = GLASS[icon ?? 'skip']
   return (
     <button className={`glass-btn${g.w > 74 ? ' glass-btn--wide' : ''}`} aria-label={label} onClick={onClick} {...p}>
-      <img src={g.src} alt="" width={g.w} height={74} draggable={false} />
-      <span className="glass-btn__css">{icon ? <Icon name={icon} /> : <span className="t-headline">{label}</span>}</span>
+      <img className="glass-btn__dark" src={g.src} alt="" width={g.w} height={74} draggable={false} />
+      <img className="glass-btn__light" src={g.light} alt="" width={g.w} height={74} draggable={false} />
     </button>
   )
 }
